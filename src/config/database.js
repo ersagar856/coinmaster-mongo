@@ -1,0 +1,14 @@
+const mongoose = require('mongoose');
+const MONGODB_URI = process.env.MONGODB_URI
+const DB_NAME = require('../utils/constants.js')
+
+const connectDB = async () => {
+   try {
+     const connectionInstance =  await mongoose.connect(`${process.env.MONGODB_URI}/coinmaster`)
+     console.log(`\n MongoDB connected !! DB HOST: ${connectionInstance.connection.host}`);
+   } catch (error) {
+      console.log("MONGODB connection error ", error)
+      process.exit(1)
+   }
+}
+module.exports = connectDB;
