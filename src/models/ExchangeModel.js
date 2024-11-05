@@ -30,7 +30,47 @@ const QuoteSchema = new mongoose.Schema({
     type: Number,
   },
 });
-
+const UrlsSchema = new mongoose.Schema(
+  {
+    website: [
+      {
+        type: String,
+        required: false,
+      },
+    ],
+    blog: [
+      {
+        type: String,
+        required: false,
+      },
+    ],
+    chat: [
+      {
+        type: String,
+        required: false,
+      },
+    ],
+    fee: [
+      {
+        type: String,
+        required: false,
+      },
+    ],
+    twitter: [
+      {
+        type: String,
+        required: false,
+      },
+    ],
+    actual: [
+      {
+        type: String,
+        required: false,
+      },
+    ],
+  },
+  { _id: false }
+);
 const ExchangeSchema = new mongoose.Schema({
   id: {
     type: Number,
@@ -138,6 +178,13 @@ const ExchangeSchema = new mongoose.Schema({
     type: Date,
   },
   quotes: [QuoteSchema],
+  urls: UrlsSchema,
+  description: {
+    type: String,
+  },
+  logo: {
+    type: String,
+  },
   reservesAvailable: {
     type: Number,
   },
