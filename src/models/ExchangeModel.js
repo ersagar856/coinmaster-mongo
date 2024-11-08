@@ -193,4 +193,14 @@ const ExchangeSchema = new mongoose.Schema({
   },
 });
 
+ExchangeSchema.virtual('financialReserves', {
+  ref: 'FinancialReserves',
+  localField: '_id',
+  foreignField: 'exchangeId',
+  justOne: false,
+});
+
+ExchangeSchema.set('toObject', { virtuals: true });
+ExchangeSchema.set('toJSON', { virtuals: true });
+
 module.exports = mongoose.model("Exchange", ExchangeSchema);
